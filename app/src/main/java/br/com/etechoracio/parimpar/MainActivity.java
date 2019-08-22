@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,15 +22,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void onProcessar (View v)
     {
-        int numero = Integer.parseInt(txtNumero.getText().toString());
-
-        if (numero % 2 == 0)
+        if(txtNumero.getText().toString().isEmpty())
         {
-            lblResultado2.setText("Par.");
+            Toast.makeText(this, "Digite um número válido", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            lblResultado2.setText("Ímpar.");
+            int numero = Integer.parseInt(txtNumero.getText().toString());
+
+            if (numero % 2 == 0)
+            {
+                lblResultado2.setText("Par.");
+            }
+            else
+            {
+                lblResultado2.setText("Ímpar.");
+            }
         }
     }
 }
